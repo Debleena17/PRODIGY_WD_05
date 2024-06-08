@@ -9,7 +9,7 @@ The Know Your Weather (KYW) application is a web-based tool designed to provide 
 
 - **weather.html**: The main HTML file for the weather application.
 - **fetch_weather.js**: JavaScript file for fetching and displaying weather data.
-- 
+  
 ## Features
 
 - Real-time weather data for searched cities.
