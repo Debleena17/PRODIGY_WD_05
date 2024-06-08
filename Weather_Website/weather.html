@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <!---The below link is for including the social media icons in the footer.-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+        <style>
+            .table th, .table td {
+                vertical-align: middle;
+                text-align: center;
+            }
+            .table th {
+                background-color: #fff;
+            }
+
+            .table th:hover{
+                background-color: #719a26;
+            }
+
+            .table td:hover{
+                background-color: #DAF7A6;
+            }
+            .city-row th {
+                text-align: left;
+            }
+        </style>
+    <title>Weather</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top">
+                KYW
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Weather
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Place 1</a></li>
+                            <li><a class="dropdown-item" href="#">Place 2</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Search</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input id="city" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <h1 class="text-center">Know your weather </h1>
+
+    <!--To display the weather in a mordern style-->
+    <div class="container">
+        <div class="container px-4 py-5" id="custom-cards">
+            <h2 class="pb-2 border-bottom text-center">Weather of <span id="cityname"></span></h2>
+
+            <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+                <div class="col">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        style="background-image: url('unsplash-photo-1.jpg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+                            style="background-color: #FFBD33;">
+                            <h3 class="pt-1 mt-5 mb-4 display-6 lh-1 fw-bold text-center" style="color: black;">
+                                Temperature Information</h3>
+                            <h3 class="pt-1 mt-5 mb-4 display-6 lh-1 fw-bold" style="color: black;"><span id="temp1">
+                                </span> °C</h3>
+                            <ul class="list-unstyled mt-3 mb-4 fw-bold" style="color: black" ;>
+                                <li>Temperature is <span id="temp"></span> °C</li>
+                                <li>Minimum Temperature is <span id="min_temp"></span> °C</li>
+                                <li>Maximum Temperature is <span id="max_temp"></span> °C</li>
+                            </ul>
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">
+                                    <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                                        class="rounded-circle border border-white">
+                                </li>
+                                <li class="d-flex align-items-center me-3" style="color: black" ;>
+                                    <small><span id="xcityname"></span></small>
+                                </li>
+                                <li class="d-flex align-items-center" style="color: black" ;>
+                                    <small>Today</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        style="background-image: url('unsplash-photo-2.jpg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+                            style="background-color: #00BBFF;">
+
+                            <h3 class="pt-1 mt-5 mb-4 display-6 lh-1 fw-bold text-center">Humidity Information</h3>
+                            <h3 class="pt-1 mt-5 mb-4 display-6 lh-1 fw-bold"><span id="humidity2"></span> &#37;</h3>
+                            <ul class="list-unstyled mt-3 mb-4 fw-bold">
+                                <li>Cloud PCT is <span id="cloud_pct"></span></li>
+                                <li>Feels Like <span id="feels_like"></span> °C</li>
+                                <li>Humidity is <span id="humidity"></span><span> &#37;</span></li>
+                            </ul>
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">
+                                    <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                                        class="rounded-circle border border-white">
+                                </li>
+                                <li class="d-flex align-items-center me-3">
+                                    <small><span id="ycityname"></span></small>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <small>Today</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        style="background-image: url('unsplash-photo-3.jpg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1" style="background-color: #FFBD33;">
+                            <h3 class="pt-1 mt-5 mb-4 display-6 lh-1 fw-bold text-center" style="color: black" ;>Wind &
+                                Sun Information</h3>
+                            <h3 class="pt-1 mt-5 mb-4 display-6 lh-1 fw-bold" style="color: black" ;><span
+                                    id="wind_speed1"></span> km/h</h3>
+                            <ul class="list-unstyled mt-3 mb-4 fw-bold" style="color: black" ;>
+                                <li>Wind Speed is <span id="wind_speed"></span> km/h</li>
+                                <li>Wind Degree is <span id="wind_degrees"></span><span>&#176;</span></li>
+                                <li>Sunrise at <span id="sunrise"></span> (IST)</li>
+                                <li>Sunset at <span id="sunset"></span> (IST)</li>
+                            </ul>
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">
+                                    <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                                        class="rounded-circle border border-white">
+                                </li>
+                                <li class="d-flex align-items-center me-3" style="color: black" ;>
+                                    <small><span id="zcityname"></span></small>
+                                </li>
+                                <li class="d-flex align-items-center" style="color: black" ;>
+                                    <small>Today</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <div class="container mt-4">
+            <h2 class="display-6 text-center mb-4">Weather of Other Cities</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>City</th>
+                            <th>Cloud Pct</th>
+                            <th>Temp</th>
+                            <th>Feels Like</th>
+                            <th>Humidity</th>
+                            <th>Min Temp</th>
+                            <th>Max Temp</th>
+                            <th>Wind Speed</th>
+                            <th>Wind Degrees</th>
+                            <th>Sunrise</th>
+                            <th>Sunset</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="city-row">
+                            <th scope="row">Seoul</th>
+                            <td><span id="seoul_cloud_pct"></span></td>
+                            <td><span id="seoul_temp"></span> °C</td>
+                            <td><span id="seoul_feels_like"></span> °C</td>
+                            <td><span id="seoul_humidity"></span> &#37;</td>
+                            <td><span id="seoul_min_temp"></span> °C</td>
+                            <td><span id="seoul_max_temp"></span>°C</td>
+                            <td><span id="seoul_wind_speed"></span> km/h</td>
+                            <td><span id="seoul_wind_degrees"></span> °</td>
+                            <td><span id="seoul_sunrise"></span></td>
+                            <td><span id="seoul_sunset"></span></td>
+                        </tr>
+                        <tr class="city-row">
+                            <th scope="row">Shanghai</th>
+                            <td><span id="shanghai_cloud_pct"></span> </td>
+                            <td><span id="shanghai_temp"></span> °C</td>
+                            <td><span id="shanghai_feels_like"></span> °C</td>
+                            <td><span id="shanghai_humidity"></span> &#37;</td>
+                            <td><span id="shanghai_min_temp"></span> °C</td>
+                            <td><span id="shanghai_max_temp"></span> °C</td>
+                            <td><span id="shanghai_wind_speed"></span> km/h</td>
+                            <td><span id="shanghai_wind_degrees"></span> °</td>
+                            <td><span id="shanghai_sunrise"></span></td>
+                            <td><span id="shanghai_sunset"></span></td>
+                        </tr>
+                        <tr class="city-row">
+                            <th scope="row">Kolkata</th>
+                            <td><span id="kolkata_cloud_pct"></span></td>
+                            <td><span id="kolkata_temp"></span> °C</td>
+                            <td><span id="kolkata_feels_like"></span> °C</td>
+                            <td><span id="kolkata_humidity"></span> &#37;</td>
+                            <td><span id="kolkata_min_temp"></span> °C</td>
+                            <td><span id="kolkata_max_temp"></span> °C</td>
+                            <td><span id="kolkata_wind_speed"></span> km/h</td>
+                            <td><span id="kolkata_wind_degrees"></span> °</td>
+                            <td><span id="kolkata_sunrise"></span></td>
+                            <td><span id="kolkata_sunset"></span></td>
+                        </tr>
+                        <tr class="city-row">
+                            <th scope="row">Seattle</th>
+                            <td><span id="seattle_cloud_pct"></span></td>
+                            <td><span id="seattle_temp"></span> °C</td>
+                            <td><span id="seattle_feels_like"></span> °C</td>
+                            <td><span id="seattle_humidity"></span> &#37;</td>
+                            <td><span id="seattle_min_temp"></span> °C</td>
+                            <td><span id="seattle_max_temp"></span> °C</td>
+                            <td><span id="seattle_wind_speed"></span> km/h</td>
+                            <td><span id="seattle_wind_degrees"></span> °</td>
+                            <td><span id="seattle_sunrise"></span></td>
+                            <td><span id="seattle_sunset"></span></td>
+                        </tr>
+                        <tr class="city-row">
+                            <th scope="row">Bangkok</th>
+                            <td><span id="bangkok_cloud_pct"></span></td>
+                            <td><span id="bangkok_temp"></span> °C</td>
+                            <td><span id="bangkok_feels_like"></span> °C</td>
+                            <td><span id="bangkok_humidity"></span> &#37;</td>
+                            <td><span id="bangkok_min_temp"></span> °C</td>
+                            <td><span id="bangkok_max_temp"></span> °C</td>
+                            <td><span id="bangkok_wind_speed"></span> km/h</td>
+                            <td><span id="bangkok_wind_degrees"></span> °</td>
+                            <td><span id="bangkok_sunrise"></span></td>
+                            <td><span id="bangkok_sunset"></span></td>
+                        </tr>
+
+                        <tr class="city-row">
+                            <th scope="row">Tokyo</th>
+                            <td><span id="tokyo_cloud_pct"></span></td>
+                            <td><span id="tokyo_temp"></span> °C</td>
+                            <td><span id="tokyo_feels_like"></span> °C</td>
+                            <td><span id="tokyo_humidity"></span> &#37;</td>
+                            <td><span id="tokyo_min_temp"></span> °C</td>
+                            <td><span id="tokyo_max_temp"></span> °C</td>
+                            <td><span id="tokyo_wind_speed"></span> km/h</td>
+                            <td><span id="tokyo_wind_degrees"></span> °</td>
+                            <td><span id="tokyo_sunrise"></span></td>
+                            <td><span id="tokyo_sunset"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="b-example-divider"></div>
+            <div class="container">
+                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                  <div class="col-md-4 d-flex align-items-center">
+                    <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                      <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                    </a>
+                    <span class="mb-3 mb-md-0 text-muted">© 2024 KYW, Inc</span>
+                  </div>
+              
+                  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3">
+                      <a class="text-muted" href="#"><i class="bi bi-twitter"></i></a>
+                    </li>
+                    <li class="ms-3">
+                      <a class="text-muted" href="#"><i class="bi bi-instagram"></i></a>
+                    </li>
+                    <li class="ms-3">
+                      <a class="text-muted" href="#"><i class="bi bi-facebook"></i></a>
+                    </li>
+                  </ul>
+                  
+                </footer>
+              </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="fetch_weather.js"></script>
+
+</body>
+
+</html>
