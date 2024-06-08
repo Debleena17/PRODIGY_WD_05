@@ -13,7 +13,7 @@ async function fetchWeather(city) {
         ycityname.innerHTML = city;
         zcityname.innerHTML = city;
         const response = await fetch(url + city, options);        //will add the city name at the end of the url so that it can fetch the weather details of that city.
-        const result = await response.json();       //changed response.text() to response.json() and the temperature details sre finally displayed.
+        const result = await response.json();       //changed response.text() to response.json() and the temperature details are finally displayed.
         //Also, response.json() is used because the api is retuning the vaues in json format and not in plain text format
         console.log(result);
 
